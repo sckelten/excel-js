@@ -1,0 +1,8 @@
+Webpack (imports/exports)
+    Babel
+    Scss
+    Eslint
+    2 Modes
+        - Dev
+        - Prod
+Git
