@@ -38,6 +38,36 @@ class Dom {
     }
     return this
   }
+
+  get data() {
+    return this.$nativeEl.dataset
+  }
+
+  closest(selector) {
+    return $(this.$nativeEl.closest(selector))
+  }
+
+  getCoordinates() {
+    return this.$nativeEl.getBoundingClientRect()
+  }
+
+  findAll(selector) {
+    return this.$nativeEl.querySelectorAll(selector)
+  }
+
+  css(styles = {}) {
+    // for (const key in styles) {
+    //   if (styles.hasOwnProperty(key)) {
+    //     console.log(key, typeof styles[key])
+    //     this.$nativeEl.style.key = styles[key]
+    //   }
+    // }
+    Object
+        .keys(styles)
+        .forEach((key) => {
+          this.$nativeEl.style[key] = styles[key]
+        })
+  }
 }
 
 export function $(selector) {
