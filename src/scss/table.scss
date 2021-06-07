@@ -1,8 +1,8 @@
 @import "variables";
 @import "mixins";
 
-.excel{
-  &__table{
+.excel {
+  &__table {
     position: absolute;
     left: 0;
     right: 0;
@@ -10,14 +10,15 @@
     overflow-x: auto;
     padding-bottom: 2px;
 
-    .row{
+    .row {
       display: flex;
       flex-direction: row;
       min-height: 20px;
-      height: $row-height ;
+      height: $row-height;
     }
 
-    .row-info{
+    .row-info {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -28,11 +29,12 @@
       background: #f8f9fa;
     }
 
-    .row-data{
+    .row-data {
       display: flex;
     }
 
-    .column{
+    .column {
+      position: relative;
       display: flex;
       background-color: #f8f9fa;
       min-height: 20px;
@@ -45,7 +47,8 @@
       border-top: none;
       border-left: none;
     }
-    .cell{
+
+    .cell {
       color: #111;
       min-width: 40px;
       width: $cell-width;
@@ -57,13 +60,58 @@
       white-space: nowrap;
       outline: none;
 
-      &.selected{
+      &.selected {
         border: none;
-        outline: 2px solid #3c74ff;
+        outline: 2px solid $primary-color;
         z-index: 2;
       }
+    }
 
+    .col-resize, .row-resize {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: $primary-color;
+      z-index: 1000;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+      }
+      &:active {
+        opacity: 1;
+      }
+    }
+
+    .col-resize {
+      top: 0;
+      width: 3px;
+      &:hover {
+        cursor: col-resize;
+      }
+      &:active {
+        height: 2000px;
+      }
+    }
+
+    .row-resize {
+      left: 0;
+      height: 4px;
+      &:hover {
+        cursor: row-resize;
+      }
+      &:active {
+        width: 2000px;
+      }
+    }
+
+    .unselectable {
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none;   /* Chrome/Safari/Opera */
+      -khtml-user-select: none;    /* Konqueror */
+      -moz-user-select: none;      /* Firefox */
+      -ms-user-select: none;       /* Internet Explorer/Edge */
+      user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
     }
   }
-
 }
